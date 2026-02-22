@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192" role="img" aria-label="Tailor Book">
+  <rect width="192" height="192" rx="32" fill="#0f766e"/>
+  <rect x="36" y="34" width="120" height="124" rx="14" fill="#ffffff"/>
+  <path d="M56 66h80M56 90h80M56 114h56" stroke="#0f766e" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="132" cy="120" r="14" fill="#0f766e"/>
+</svg>
