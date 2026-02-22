@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailor Book</title>
+    <meta name="theme-color" content="#0f766e" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icons/icon-192.svg" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>Tailor Book</h1>
+
+      <section class="tab-panel active" id="tab-overview">
+        <section class="section" id="dashboardSummary">
+          <h2>Summary</h2>
+          <div class="grid">
+            <div class="stat-card">
+              <p class="label">Customers</p>
+              <p class="value" id="sumCustomers">0</p>
+            </div>
+            <div class="stat-card">
+              <p class="label">Orders</p>
+              <p class="value" id="sumOrders">0</p>
+            </div>
+            <div class="stat-card">
+              <p class="label">Pending</p>
+              <p class="value" id="sumPending">0</p>
+            </div>
+            <div class="stat-card">
+              <p class="label">Balance</p>
+              <p class="value" id="sumBalance">Rs 0</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="tab-panel" id="tab-customers">
+        <section class="section">
+          <h2>Customers</h2>
+          <label for="customerSearch">Search Customer</label>
+          <input id="customerSearch" type="text" placeholder="Search by name or phone" />
+          <div id="customerList" class="list-box"></div>
+        </section>
+      </section>
+
+      <section class="tab-panel" id="tab-orders">
+        <section class="section">
+          <h2>Orders</h2>
+          <label for="statusFilter">Filter by Status</label>
+          <select id="statusFilter">
+            <option value="All">All</option>
+            <option value="Pending">Pending</option>
+            <option value="Stitching">Stitching</option>
+            <option value="Ready">Ready</option>
+            <option value="Delivered">Delivered</option>
+          </select>
+          <div id="ordersContainer"></div>
+        </section>
+      </section>
+    </main>
+
+    <nav class="footer-nav" aria-label="Main tabs">
+      <button class="footer-tab active" data-tab="overview" type="button">
+        <span class="tab-icon">⌂</span>
+        <span class="tab-text">Overview</span>
+      </button>
+      <button class="footer-tab" data-tab="customers" type="button">
+        <span class="tab-icon">◉</span>
+        <span class="tab-text">Customers</span>
+      </button>
+      <button class="footer-tab" data-tab="orders" type="button">
+        <span class="tab-icon">▣</span>
+        <span class="tab-text">Orders</span>
+      </button>
+    </nav>
+
+    <button id="fabCustomer" type="button" class="fab fab-customer" aria-label="Add customer">+ Customer</button>
+    <button id="fabOrder" type="button" class="fab fab-order hidden" aria-label="Add order">+ Order</button>
+
+    <div id="customerModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="customerModalTitle">
+      <div class="modal-card">
+        <div class="modal-head">
+          <h2 id="customerModalTitle">Add Customer</h2>
+          <button type="button" id="closeCustomerModal" class="icon-btn">X</button>
+        </div>
+        <form id="customerForm">
+          <div>
+            <label for="customerName">Name</label>
+            <input id="customerName" type="text" placeholder="Customer name" required />
+          </div>
+          <div>
+            <label for="customerPhone">Phone</label>
+            <input id="customerPhone" type="tel" placeholder="Phone number" required />
+          </div>
+          <div>
+            <label for="customerNotes">Notes</label>
+            <textarea id="customerNotes" placeholder="Measurements / remarks"></textarea>
+          </div>
+          <button type="submit">Save Customer</button>
+          <p id="customerMessage" class="message"></p>
+        </form>
+      </div>
+    </div>
+
+    <div id="orderModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
+      <div class="modal-card">
+        <div class="modal-head">
+          <h2 id="orderModalTitle">Add Order</h2>
+          <button type="button" id="closeOrderModal" class="icon-btn">X</button>
+        </div>
+        <form id="orderForm" autocomplete="off">
+          <div class="input-wrap">
+            <label for="orderCustomerName">Customer Name</label>
+            <input id="orderCustomerName" type="text" placeholder="Type customer name" required />
+            <div id="customerSuggestions" class="suggestions"></div>
+          </div>
+          <div>
+            <label for="orderCustomerPhone">Phone</label>
+            <input id="orderCustomerPhone" type="text" readonly placeholder="Auto-filled" />
+          </div>
+          <div>
+            <label for="orderItem">Item</label>
+            <select id="orderItem" required>
+              <option value="">Select item</option>
+              <option value="Shirt">Shirt</option>
+              <option value="Pant">Pant</option>
+              <option value="Blouse">Blouse</option>
+              <option value="Salwar">Salwar</option>
+              <option value="Kurti">Kurti</option>
+              <option value="Chudidhar">Chudidhar</option>
+              <option value="Coat">Coat</option>
+              <option value="Uniform">Uniform</option>
+              <option value="Alteration">Alteration</option>
+            </select>
+          </div>
+          <div>
+            <label for="orderTotal">Total Amount</label>
+            <input id="orderTotal" type="number" min="0" placeholder="0" required />
+          </div>
+          <div>
+            <label for="orderAdvance">Advance</label>
+            <input id="orderAdvance" type="number" min="0" placeholder="0" />
+          </div>
+          <div>
+            <label for="orderDueDate">Due Date</label>
+            <input id="orderDueDate" type="date" />
+          </div>
+          <div>
+            <label for="orderStatus">Status</label>
+            <select id="orderStatus">
+              <option value="Pending">Pending</option>
+              <option value="Stitching">Stitching</option>
+              <option value="Ready">Ready</option>
+              <option value="Delivered">Delivered</option>
+            </select>
+          </div>
+          <div>
+            <label for="orderNotes">Notes</label>
+            <textarea id="orderNotes" placeholder="Measurement / cloth details"></textarea>
+          </div>
+          <button type="submit">Save Order</button>
+          <p id="orderMessage" class="message"></p>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/home.js"></script>
+      <script src="js/pwa.js"></script>
+  </body>
+</html>
