@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Order</title>
+    <meta name="theme-color" content="#c23a73" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icons/icon-192.svg" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <div class="top-bar">
+        <a class="back-link" href="index.html">Back</a>
+        <h1>Add Order</h1>
+      </div>
+
+      <section class="section">
+        <form id="orderForm" class="field-form" autocomplete="off">
+          <div class="field-item">
+            <label for="orderCustomerSearch">Customer</label>
+            <div class="input-wrap">
+              <input id="orderCustomerSearch" type="text" placeholder="Type customer name" autocomplete="off" />
+              <input id="orderCustomerId" type="hidden" />
+              <div id="customerSuggestions" class="suggestions hidden" role="listbox" aria-label="Customer suggestions"></div>
+            </div>
+          </div>
+          <div class="field-item">
+            <label for="orderCustomerPhone">Phone</label>
+            <input id="orderCustomerPhone" type="text" readonly />
+          </div>
+
+          <div class="field-item">
+            <label>Order Services</label>
+            <input id="serviceSearch" type="text" placeholder="Search services" />
+            <div class="table-wrap">
+              <table class="service-table" id="serviceTable">
+                <thead>
+                  <tr>
+                    <th>Select</th>
+                    <th>Service</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody id="serviceTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="field-item">
+            <label for="orderTotal">Total Amount</label>
+            <input id="orderTotal" type="number" readonly />
+          </div>
+          <div class="field-item">
+            <label for="orderPaid">Paid Amount</label>
+            <input id="orderPaid" type="number" min="0" value="0" />
+          </div>
+          <div class="field-item">
+            <label for="orderMaterialCost">Material Cost</label>
+            <input id="orderMaterialCost" type="number" min="0" value="0" />
+          </div>
+          <div class="field-item">
+            <label for="orderDueDate">Due Date</label>
+            <input id="orderDueDate" type="date" />
+          </div>
+          <div class="field-item">
+            <label for="orderStatus">Status</label>
+            <select id="orderStatus">
+              <option value="Pending">Pending</option>
+              <option value="Stitching">Stitching</option>
+              <option value="Ready">Ready</option>
+              <option value="Delivered">Delivered</option>
+            </select>
+          </div>
+          <div class="field-item">
+            <label for="orderNotes">Notes</label>
+            <textarea id="orderNotes" rows="3"></textarea>
+          </div>
+
+          <button type="submit">Save Order</button>
+          <p id="orderMessage" class="message"></p>
+        </form>
+      </section>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+    <script src="js/cloud-config.js"></script>
+    <script src="js/firestore-sync.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app-config.js"></script>
+    <script src="js/loading-screen.js"></script>
+    <script src="js/orders.js"></script>
+    <script src="js/pwa.js"></script>
+  </body>
+</html>

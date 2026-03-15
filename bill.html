@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice</title>
+    <meta name="theme-color" content="#c23a73" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icons/icon-192.svg" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="app bill-app" id="billApp">
+      <div class="record-head no-print">
+        <a class="back-link" id="billBackLink" href="index.html">Back</a>
+        <div class="record-actions">
+          <button type="button" id="shareBillBtn" class="mini-btn wa-btn">Share PDF</button>
+          <button type="button" id="printBillBtn" class="mini-btn ok-btn">View PDF</button>
+        </div>
+      </div>
+
+      <section class="section bill-sheet" id="billRoot"></section>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+    <script src="js/cloud-config.js"></script>
+    <script src="js/firestore-sync.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app-config.js"></script>
+    <script src="js/loading-screen.js"></script>
+    <script src="js/invoice-pdf.js"></script>
+    <script src="js/bill.js"></script>
+    <script src="js/pwa.js"></script>
+  </body>
+</html>
