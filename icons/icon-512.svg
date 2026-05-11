@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="TailorBook">
+  <rect width="512" height="512" rx="96" fill="#c63d6f"/>
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="26">
+    <path d="M80 374h352"/>
+    <path d="M118 374v-48c0-24 20-44 44-44h96c34 0 58-24 58-58v-62c0-28 22-50 50-50h22"/>
+    <path d="M180 190h62"/>
+    <path d="M332 200h88"/>
+    <path d="M406 200v90"/>
+    <circle cx="392" cy="316" r="44"/>
+    <path d="M346 360H254c-22 0-40 18-40 40v6"/>
+    <path d="M154 124h62c22 0 40 18 40 40v16"/>
+  </g>
+  <circle cx="160" cy="162" r="18" fill="#ffffff" opacity="0.9"/>
+</svg>
